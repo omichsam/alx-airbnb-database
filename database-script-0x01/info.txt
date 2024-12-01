@@ -1,0 +1,36 @@
+Explanation:
+User Table:
+
+The user_id is the primary key and uses the UUID data type for uniqueness.
+The email field is unique to avoid duplication.
+role is an ENUM type with values ('guest', 'host', 'admin').
+The created_at field automatically sets to the current timestamp when the user is created.
+Property Table:
+
+property_id is the primary key.
+host_id is a foreign key that references User(user_id) and is set to NULL on delete (a host can be removed, but properties remain).
+Timestamps created_at and updated_at help track creation and updates.
+Booking Table:
+
+booking_id is the primary key.
+property_id and user_id are foreign keys linking to Property and User.
+The status is an ENUM with values (pending, confirmed, canceled).
+The total_price is stored as a DECIMAL to handle monetary values.
+Payment Table:
+
+payment_id is the primary key.
+booking_id is a foreign key referencing Booking.
+amount holds the monetary value of the payment, and payment_method is an ENUM (credit_card, paypal, stripe).
+Review Table:
+
+review_id is the primary key.
+property_id and user_id are foreign keys.
+The rating is an integer with a constraint to ensure values between 1 and 5.
+comment holds the review text.
+Message Table:
+
+message_id is the primary key.
+sender_id and recipient_id are foreign keys referencing User.
+message_body holds the message content.
+Indexes:
+Indexes are created on email, property_id, booking_id, payment_id, review_id, and message_id to optimize query performance.
