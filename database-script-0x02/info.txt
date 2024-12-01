@@ -1,0 +1,18 @@
+
+---
+
+### Files Contents:
+
+1. **`seed.sql`**:
+   - This script inserts sample data into each of the tables: `User`, `Property`, `Booking`, `Payment`, `Review`, and `Message`.
+   - Each table has realistic data, such as users with different roles (guest, host, admin), properties with descriptions and prices, 
+   bookings with status, reviews with ratings, and messages exchanged between users.
+
+2. **`README.md`**:
+   - This markdown file explains the purpose of the seed script and provides instructions on how to execute it in a PostgreSQL 
+   or MySQL environment.
+   - It also describes the types of sample data being inserted into the database.
+
+By running this script, you'll populate your database with realistic data, which can help you test the functionality and 
+performance of your AirBnB-like application. Add these files to the `database-script-0x02` directory in your GitHub repository 
+as instructed.
