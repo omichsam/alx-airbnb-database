@@ -57,3 +57,39 @@ WHERE
     (SELECT AVG(r.rating) 
      FROM Review r 
      WHERE r.property_id = p.property_id) > 4.0;
+
+
+
+## WINDOW FUNCTIONS :
+
+# Aggregations and Window Functions for Airbnb Database
+
+This file contains SQL queries demonstrating the use of aggregation functions and window functions to analyze data in the Airbnb-like database.
+
+## Overview
+
+The following queries are provided:
+1. **Aggregation (COUNT)**: Find the total number of bookings made by each user.
+2. **Window Function (ROW_NUMBER and RANK)**: Rank properties based on the total number of bookings they have received.
+
+## Query 1: Aggregation - Total Bookings Made by Each User
+This query calculates the total number of bookings made by each user using the `COUNT` function. It groups the data by the user's `user_id` and orders the results by the total number of bookings in descending order.
+
+### SQL:
+
+```sql
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    u.email,
+    COUNT(b.booking_id) AS total_bookings
+FROM 
+    "User" u
+LEFT JOIN 
+    Booking b ON u.user_id = b.user_id
+GROUP BY 
+    u.user_id
+ORDER BY 
+    total_bookings DESC;
+
