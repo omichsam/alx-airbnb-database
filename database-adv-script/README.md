@@ -28,3 +28,32 @@ FROM
     Booking b
 INNER JOIN 
     "User" u ON b.user_id = u.user_id;
+
+
+# Subqueries for Airbnb Database
+
+This file contains SQL queries demonstrating the use of both correlated and non-correlated subqueries in an Airbnb-like database.
+
+## Overview
+
+The following queries are provided:
+1. **Non-Correlated Subquery**: Find all properties where the average rating is greater than 4.0.
+2. **Correlated Subquery**: Find users who have made more than 3 bookings.
+
+## Query 1: Non-Correlated Subquery - Properties with an Average Rating Greater Than 4.0
+This query retrieves all properties where the average rating is greater than 4.0. The subquery is non-correlated because it can be executed independently of the outer query.
+
+### SQL:
+
+```sql
+SELECT 
+    p.property_id,
+    p.name AS property_name,
+    p.location,
+    p.pricepernight
+FROM 
+    Property p
+WHERE 
+    (SELECT AVG(r.rating) 
+     FROM Review r 
+     WHERE r.property_id = p.property_id) > 4.0;
