@@ -51,3 +51,19 @@ These subqueries demonstrate how to handle both independent and dependent subque
    - **How it works**: The `LEFT JOIN` between the `Property` and `Booking` tables ensures that all properties are included, even those without bookings (they will have a `0` count). The `RANK()` function ranks the properties by the number of bookings in descending order, and the `GROUP BY` clause ensures the count is calculated for each property.
 
 These queries help in analyzing the Airbnb database by providing insights into user activity and property popularity based on booking data.
+ 
+
+
+## Indexing
+
+
+---
+
+### Explanation of the Indexes:
+
+- **Index on `email` in `User` Table**: Since `email` is often used to look up users, having an index will allow quick lookups based on email addresses.
+- **Indexes on `user_id`, `property_id`, and `start_date` in `Booking` Table**: These columns are frequently used in queries that filter by user, property, or date. Creating indexes on them will optimize query performance.
+- **Index on `host_id` in `Property` Table**: This index helps to quickly fetch all properties belonging to a specific host.
+- **Index on `location` in `Property` Table**: Locations are often used in queries to filter properties by geographical area, so indexing this column will speed up such queries.
+
+These indexes significantly improve the performance of queries, especially as the database grows in size. By reducing the need for full table scans, the queries become much faster and more efficient.
