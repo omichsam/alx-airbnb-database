@@ -107,3 +107,13 @@ ORDER BY
 This process improves the performance of complex queries and ensures better scalability for large datasets.
 
 
+### Partitioning Large Tables
+
+
+- **Partitioning**: We partition the `Booking` table by `start_date` using range partitioning. Each year has its own partition (e.g., `Booking_2020`, `Booking_2021`, etc.).
+- **Performance Testing**: We tested the performance of queries on the partitioned table before and after partitioning. Queries that filter by date range perform better after partitioning since they only scan relevant partitions.
+- **Partitioning Benefits**: The primary benefits observed include faster query execution times and improved indexing efficiency.
+
+---
+
+This provides both the SQL script for partitioning and a detailed performance report in the `partition_performance.md` format.
