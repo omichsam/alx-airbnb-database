@@ -93,3 +93,17 @@ GROUP BY
 ORDER BY 
     total_bookings DESC;
 
+
+    -- Optimize Complex queries
+
+
+---
+
+### Summary of Optimizations:
+1. **Indexes**: We created indexes on frequently used columns like `user_id`, `property_id`, and `booking_id` to speed up joins.
+2. **EXPLAIN Analysis**: Using `EXPLAIN`, we identified full table scans and optimized the query by reducing unnecessary joins and ensuring the database used indexes.
+3. **Refactor Query**: The refactored query ensures optimal execution by leveraging indexes and optimizing joins.
+
+This process improves the performance of complex queries and ensures better scalability for large datasets.
+
+
